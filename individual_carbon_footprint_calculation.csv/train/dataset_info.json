@@ -1,0 +1,114 @@
+{
+  "builder_name": "csv",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "individual-carbon-footprint-calculation",
+  "dataset_size": 2306565,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/We-Bears/Individual-Carbon-Footprint-Calculation@d0fa512150f1f2e23695a9e18aab6b8ba8227a0d/Carbon Emission.csv": {
+      "num_bytes": 1622858,
+      "checksum": null
+    }
+  },
+  "download_size": 1622858,
+  "features": {
+    "Body Type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Sex": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Diet": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "How Often Shower": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Heating Energy Source": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Transport": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Vehicle Type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Social Activity": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Monthly Grocery Bill": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "Frequency of Traveling by Air": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Vehicle Monthly Distance Km": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "Waste Bag Size": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Waste Bag Weekly Count": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "How Long TV PC Daily Hour": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "How Many New Clothes Monthly": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "How Long Internet Daily Hour": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "Energy efficiency": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Recycling": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Cooking_With": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "CarbonEmission": {
+      "dtype": "int64",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 3929423,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 2306565,
+      "num_examples": 10000,
+      "dataset_name": "individual-carbon-footprint-calculation"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
