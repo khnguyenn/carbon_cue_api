@@ -92,3 +92,128 @@ Weights used:
 | Food_Diet      | **11.4%**  |
 | Shopping       | **18.1%**  |
 | Digital_Usage  | **2.5%**   |
+
+---
+# 🌿 CarbonCue API Documentation
+
+This API is built with **FastAPI** to estimate **carbon emissions** across various lifestyle categories using pre-trained ML models.
+
+
+## 📦 Models Loaded
+
+The following models are loaded from `models/` directory:
+
+- `ModelTransport.pkl`
+- `ModelHomeEnergy.pkl`
+- `ModelDigitalUsage.pkl`
+- `ModelShopping.pkl`
+- `ModelFoodDiet.pkl`
+
+---
+
+## 🔐 CORS Support
+
+CORS is enabled to allow frontend applications to communicate with this API. You can customize CORS settings by modifying:
+
+```python
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change this to your frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
+
+---
+
+## 📡 Endpoints
+
+### `GET /`
+- **Description:** Root endpoint to check the welcome message.
+- **Response:**
+```json
+{
+  "message": "Welcome to the CarbonCue API",
+  "status": "healthy"
+}
+```
+
+---
+
+### `GET /health`
+- **Description:** Returns API and model health.
+- **Response:**
+```json
+{
+  "status": "healthy",
+  "models_loaded": 5
+}
+```
+
+---
+
+### `POST /predictTransport`
+- **Description:** Predict carbon emission from transport data.
+- **Request Body:**
+```json
+{
+  "transport": "private",
+  "vehicle_type": "petrol",
+  "vehicle_monthly_distance_km": 500.0,
+  "frequency_of_traveling_by_air": "rarely"
+}
+```
+
+---
+
+### `POST /predictHomeEnergy`
+- **Description:** Predict emission based on home energy use.
+- **Request Body:**
+```json
+{
+  "heating_energy_source": "electricity",
+  "energy_efficiency": "Yes",
+  "how_long_tv_pc_daily_hour": 5
+}
+```
+
+---
+
+### `POST /predictDigitalUsage`
+- **Description:** Predict carbon output from internet use.
+- **Request Body:**
+```json
+{
+  "how_long_internet_daily_hour": 6
+}
+```
+
+---
+
+### `POST /predictShopping`
+- **Description:** Predict shopping-related emissions.
+- **Request Body:**
+```json
+{
+  "how_many_new_clothes_monthly": 3,
+  "waste_bag_size": "medium",
+  "waste_bag_weekly_count": 2,
+  "recycling": ["Paper", "Plastic"]
+}
+```
+
+---
+
+### `POST /predictFoodDiet`
+- **Description:** Estimate emissions from food and diet.
+- **Request Body:**
+```json
+{
+  "diet": "omnivore",
+  "monthly_grocery_bill": 500
+}
+```
+
+---
+
