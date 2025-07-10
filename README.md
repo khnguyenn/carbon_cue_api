@@ -127,6 +127,52 @@ app.add_middleware(
 
 ---
 
+
+---
+
+## 🧩 Schemas (Pydantic Models)
+
+### 🔸 Transport
+```python
+class Transport(BaseModel):
+    transport: Literal["private", "public", "walk/bicycle"]
+    vehicle_type: Literal['petrol', 'diesel', 'electric','None']
+    vehicle_monthly_distance_km: float
+    frequency_of_traveling_by_air: Literal['never', 'rarely', 'frequently', 'very frequently']
+```
+
+### 🔸 HomeEnergy
+```python
+class HomeEnergy(BaseModel):
+    heating_energy_source: Literal['electricity','natural gas', 'wood', 'coal','None']
+    energy_efficiency: Literal['No','Sometimes','Yes']
+    how_long_tv_pc_daily_hour: int
+```
+
+### 🔸 DigitalUsage
+```python
+class DigitalUsage(BaseModel):
+    how_long_internet_daily_hour: int
+```
+
+### 🔸 Shopping
+```python
+class Shopping(BaseModel):
+    how_many_new_clothes_monthly: int
+    waste_bag_size: Literal['small', 'medium', 'large', 'extra large', 'None']
+    waste_bag_weekly_count: int
+    recycling: List[Literal["Paper", "Plastic", "Glass", "Metal"]] = Field(default_factory=list)
+```
+
+### 🔸 FoodDiet
+```python
+class FoodDiet(BaseModel):
+    diet: Literal['vegan', 'vegetarian', 'pescetarian', 'omnivore', 'None']
+    monthly_grocery_bill: int
+```
+
+---
+
 ## 📡 Endpoints
 
 ### `GET /`
