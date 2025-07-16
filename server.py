@@ -57,11 +57,11 @@ class FoodDiet(BaseModel):
     
 
 @app.get("/")
-def read_root():
+async def read_root():
     return {"message": "Welcome to the CarbonCue API", "status": "healthy"}
 
 @app.get("/health")
-def health():
+async def health():
     models_loaded = sum([
         ModelTransport is not None,
         ModelHomeEnergy is not None, 
@@ -72,7 +72,7 @@ def health():
     return {"status": "healthy", "models_loaded": models_loaded}
 
 @app.post("/predictTransport")
-def predictTransport(data: Transport):
+async def predictTransport(data: Transport):
     input_df = pd.DataFrame([{
         "Transport": data.transport,
         "Vehicle Type": data.vehicle_type,
@@ -87,7 +87,7 @@ def predictTransport(data: Transport):
         return {"error": str(e)}
 
 @app.post("/predictHomeEnergy")
-def predictHomeEnergy(data: HomeEnergy):
+async def predictHomeEnergy(data: HomeEnergy):
     input_df = pd.DataFrame([{
         "Heating Energy Source": data.heating_energy_source,
         "Energy efficiency": data.energy_efficiency,
@@ -101,7 +101,7 @@ def predictHomeEnergy(data: HomeEnergy):
         return {"error": str(e)}
 
 @app.post("/predictDigitalUsage")
-def predictDigitalUsage(data: DigitalUsage):
+async def predictDigitalUsage(data: DigitalUsage):
     input_df = pd.DataFrame([{
         "How Long Internet Daily Hour": data.how_long_internet_daily_hour
     }])
@@ -113,12 +113,12 @@ def predictDigitalUsage(data: DigitalUsage):
         return {"error": str(e)}
 
 @app.post("/predictShopping")
-def predictShopping(data: Shopping):
+async def predictShopping(data: Shopping):
     input_df = pd.DataFrame([{
         "How Many New Clothes Monthly": data.how_many_new_clothes_monthly,
         "Waste Bag Size": data.waste_bag_size,
         "Waste Bag Weekly Count": data.waste_bag_weekly_count,
-        "Recycling": data.recycling
+        "Recycling": ', '.join(data.recycling)
     }])
 
     try:
@@ -128,7 +128,7 @@ def predictShopping(data: Shopping):
         return {"error": str(e)}
 
 @app.post("/predictFoodDiet")
-def predictFoodDiet(data: FoodDiet):
+async def predictFoodDiet(data: FoodDiet):
     input_df = pd.DataFrame([{
         "Diet": data.diet,
         "Monthly Grocery Bill": data.monthly_grocery_bill
@@ -142,5 +142,5 @@ def predictFoodDiet(data: FoodDiet):
     
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8080))
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
